@@ -1,0 +1,29 @@
+﻿@page "/department/{Id:int}"
+    <TitleComponent pageTitle="Department"></TitleComponent>
+
+    @if (Id > 0)
+    {
+        <h3>Department</h3>
+        <p>Department is @department.Name</p>
+    }
+    @code {
+        [Parameter]
+        public int Id { get; set; }
+        DepartmentViewModel department = null;
+        List<DepartmentViewModel> departments = new List<DepartmentViewModel>();
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            departments.Add(new DepartmentViewModel { Id = 1, Name = "CRM", IsActive = true });
+            departments.Add(new DepartmentViewModel { Id = 2, Name = "Designer", IsActive = true });
+            department = departments.FirstOrDefault(x => x.Id == this.Id);
+        }
+        #region Department View Model
+        class DepartmentViewModel
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public bool IsActive { get; set; }
+        }
+        #endregion
+    }

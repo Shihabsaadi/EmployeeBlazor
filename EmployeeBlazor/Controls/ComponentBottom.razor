@@ -1,0 +1,9 @@
+﻿<h3>ComponentBottom</h3>
+<h1 style="color:@counterColor">counterReciever: @counterReciever</h1>
+@code {
+    [CascadingParameter(Name = "Counter")]
+    public int counterReciever { get; set; }
+    [CascadingParameter(Name = "CounterColor")]
+    public string counterColor {get; set; }
+
+}
