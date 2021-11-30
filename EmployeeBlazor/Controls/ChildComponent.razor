@@ -1,0 +1,19 @@
+﻿@if (isShown)
+{
+    <h3>ChildComponent</h3>
+
+}
+
+@code {
+    public  bool isShown = false;
+    public void show()
+    {
+        isShown = true;
+        StateHasChanged();
+    }
+    public void hide()
+    {
+        isShown = false;
+        StateHasChanged();
+    }
+}

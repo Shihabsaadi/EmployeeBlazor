@@ -1,55 +1,63 @@
 ﻿@page "/employee"
-    <TitleComponent pageTitle="Employee"></TitleComponent>
+<TitleComponent pageTitle="Employee"></TitleComponent>
+<button class="btn btn-primary" @onclick="(() => { child.show();})">Click To show</button>
 
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Amount</th>
-                <th>IsActive</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in employees)
-            {
-                <tr>
-                    <td><a href="@($"/department/{item.DepartmentId}")"> @item.Name</a></td>
-                    <td>@item.Amount.ToString("c")</td>
-                    <td>@item.IsActive</td>
+    <button class="btn btn-primary" @onclick="(() => { child.hide();})">Click To hide</button>
 
-                </tr>
-            }
-        </tbody>
-    </table>
-    <Department></Department>
-    @code
-{
-        EmployeeViewModel employee = null;
-        List<EmployeeViewModel> employees = new List<EmployeeViewModel>();
-        protected override void OnInitialized()
+
+
+<ChildComponent @ref="child"></ChildComponent>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>IsActive</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in employees)
         {
-            base.OnInitialized();
-            employee = new EmployeeViewModel
-            {
-                Name = "Ahmad Shihab Saadi",
-                Amount = 32000,
-                DepartmentId = 1,
-                IsActive = true,
-                Phones = new List<Phone>
-            {
+            <tr>
+                <td><a href="@($"/department/{item.DepartmentId}")"> @item.Name</a></td>
+                <td>@item.Amount.ToString("c")</td>
+                <td>@item.IsActive</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<Department></Department>
+@code
+{
+    private ChildComponent child;
+
+    EmployeeViewModel employee = null;
+    List<EmployeeViewModel> employees = new List<EmployeeViewModel>();
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        employee = new EmployeeViewModel
+        {
+            Name = "Ahmad Shihab Saadi",
+            Amount = 32000,
+            DepartmentId = 1,
+            IsActive = true,
+            Phones = new List<Phone>
+{
             new Phone { Id = 1, Operator = "Robi", Number = "01828422676" },
             new Phone { Id = 2, Operator = "GP", Number = "01704165498" }
             }
-            };
-            employees = new List<EmployeeViewModel>
-        {
+        };
+        employees = new List<EmployeeViewModel>
+{
             new EmployeeViewModel {
             Name = "Ahmad Shihab Saadi",
             Amount = 32000,
             DepartmentId=1,
             IsActive = true,
             Phones = new List<Phone>
-            {
+{
             new Phone { Id = 1, Operator = "Robi", Number = "01828422676" },
             new Phone { Id = 2, Operator = "GP", Number = "01704165498" }
             }
@@ -60,26 +68,26 @@
             DepartmentId=2,
             IsActive = true,
             Phones = new List<Phone>
-            {
+{
             new Phone { Id = 1, Operator = "Robi", Number = "01816555509" },
             }
         } };
-        }
-
-        #region View Model
-        class EmployeeViewModel
-        {
-            public string Name { get; set; }
-            public double Amount { get; set; }
-            public int DepartmentId { get; set; }
-            public bool IsActive { get; set; }
-            public List<Phone> Phones;
-        }
-        class Phone
-        {
-            public int Id { get; set; }
-            public string Operator { get; set; }
-            public string Number { get; set; }
-        }
-        #endregion
     }
+
+    #region View Model
+    class EmployeeViewModel
+    {
+        public string Name { get; set; }
+        public double Amount { get; set; }
+        public int DepartmentId { get; set; }
+        public bool IsActive { get; set; }
+        public List<Phone> Phones;
+    }
+    class Phone
+    {
+        public int Id { get; set; }
+        public string Operator { get; set; }
+        public string Number { get; set; }
+    }
+    #endregion
+}
