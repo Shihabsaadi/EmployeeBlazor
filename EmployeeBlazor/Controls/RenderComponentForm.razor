@@ -1,0 +1,22 @@
+﻿<div class="field">
+    <label class="label">@NameLabel</label>
+    <div class="control">
+        @NameInput
+    </div>
+</div>
+<div class="field">
+    <label class="label">@EmailLabel</label>
+    <div class="control">
+        @EmailInput
+    </div>
+</div>
+@code {
+    [Parameter]
+    public string NameLabel { get; set; }
+    [Parameter]
+    public RenderFragment NameInput { get; set; }
+    [Parameter]
+    public string EmailLabel { get; set; }
+    [Parameter]
+    public RenderFragment EmailInput { get; set; }
+}
