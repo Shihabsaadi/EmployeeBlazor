@@ -1,0 +1,44 @@
+﻿@page "/Cement"
+    <RenderfragmentRowComponent @ref="cementRef" Items="cementProperties">
+        <Header>
+            <h1>Cements</h1>
+        </Header>
+        <Row Context="cement">
+            <div>
+                <b> @cement.CompanyName</b>
+                &nbsp;
+                <button class="btn btn-light" @onclick="@(()=>{
+                        EditCement(cement);
+                        })">Edit</button>
+           </div>
+            <div class="ml-4">@cement.Name</div>
+        </Row>
+        <EditTemplate Context="currentCement">
+            <div><text>Company Name: </text><input class="form-control" @bind-value="currentCement.CompanyName" /></div>
+            <div><text>Name: </text><input class="form-control" @bind-value="currentCement.Name" /></div>
+        </EditTemplate>
+    </RenderfragmentRowComponent>
+    @code {
+        private RenderfragmentRowComponent<CementProperty> cementRef;
+        private List<CementProperty> cementProperties;
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            cementProperties = new List<CementProperty>()
+            {
+                new CementProperty{CompanyName="Bashundhara Group", Name="Bashundhara Cement"},
+                new CementProperty{CompanyName="Bashundhara Group", Name="Megna Cement"},
+                new CementProperty{CompanyName="Abud Khayer Group", Name="Shah Cement"},
+            };
+        }
+        private void EditCement(CementProperty cementProperty)
+        {
+            cementRef.itemToEdit = cementProperty;
+        }
+        class CementProperty
+        {
+            public string CompanyName { get; set; }
+            public string Name { get; set; }
+
+        }
+    }

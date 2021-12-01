@@ -1,0 +1,23 @@
+﻿@page "/grocery"
+<GridAutoComponent Items="GroceryItems" CssClass="is-hoverable" ColumnsToExcludeCSV="Id" ></GridAutoComponent>
+@code {
+    public List<GroceryItem> GroceryItems;
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        GroceryItems = new List<GroceryItem>
+    {
+            new GroceryItem{Id=1,Name="Ada"},
+            new GroceryItem{Id=2,Name="Rosun"},
+            new GroceryItem{Id=3,Name="Peyaj"},
+            new GroceryItem{Id=4,Name="Jira"},
+            new GroceryItem{Id=5,Name="Pachfuron"}
+        };
+    }
+    public class GroceryItem
+    {
+        public int Id { get; set; }
+        public String Name { get; set; }
+
+    }
+}
