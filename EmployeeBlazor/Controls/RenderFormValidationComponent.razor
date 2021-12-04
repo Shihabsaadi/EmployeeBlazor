@@ -1,0 +1,12 @@
+﻿<div class="field">
+    <label class="label">@NameLabel</label>
+    <div class="control">
+        @NameInput
+    </div>
+</div>
+@code {
+    [Parameter]
+    public string NameLabel { get; set; }
+    [Parameter]
+    public RenderFragment NameInput { get; set; }
+}

@@ -1,0 +1,52 @@
+﻿@page "/formvalidation"
+@using System.ComponentModel.DataAnnotations
+<h3>Form Validation</h3>
+<EditForm Model="person" OnInvalidSubmit="ValidForSubmitted">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+    <RenderFormValidationComponent NameLabel="FirstName">
+        <NameInput>
+            <input class="input" type="text" placeholder="Input FirstName" @bind-value="person.FirstName">
+        </NameInput>
+    </RenderFormValidationComponent>
+    <RenderFormValidationComponent NameLabel="LastName">
+        <NameInput>
+            <input class="input" type="text" placeholder="Input LastName" @bind-value="person.LastName">
+        </NameInput>
+    </RenderFormValidationComponent>
+    <RenderFormValidationComponent NameLabel="Phone">
+        <NameInput>
+            <input class="input" type="number" placeholder="Input Phone" @bind-value="person.Phone">
+        </NameInput>
+    </RenderFormValidationComponent>
+    <RenderFormValidationComponent NameLabel="Email">
+        <NameInput>
+            <input class="input" type="email" placeholder="emailinput" @bind-value="person.Email">
+        </NameInput>
+    </RenderFormValidationComponent>
+    <button type="submit" class="btn btn-success">Save</button>
+</EditForm>
+
+@code {
+    Person person = new Person();
+    private void ValidForSubmitted()
+        {
+
+        }
+    class Person
+    {
+        [Required]
+        [StringLength(100)]
+        public string FirstName { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string LastName { get; set; }
+        [Required]
+        [Range(1, 1000)]
+        public string Phone { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+    }
+}
