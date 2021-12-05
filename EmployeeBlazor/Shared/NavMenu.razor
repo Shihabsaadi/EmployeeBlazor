@@ -4,56 +4,16 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 </div>
-
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="employee">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Employee
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="employeeform">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Employee Form
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="grocery">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Grocery
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="Cement">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Cement
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="onafterRenderPage">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> On after Render
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="formvalidation">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Form validation
-            </NavLink>
-        </li>
-        
-    </ul>
+    <MenuComponent Items="menuProperties">
+        <Row Context="menu">
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="@menu.MenuUrl" Match="NavLinkMatch.All">
+                    <span class="@menu.MenuIcon" aria-hidden="true"></span> @menu.MenuName
+                </NavLink>
+            </li>
+        </Row>
+    </MenuComponent>
 </div>
 
 @code {
@@ -64,5 +24,29 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+    private List<MenuDetails> menuProperties;
+    protected override void OnInitialized()
+
+    {
+        base.OnInitialized();
+        menuProperties = new List<MenuDetails>()
+            {
+                new MenuDetails{MenuName="Home", MenuUrl="",MenuIcon="oi oi-home"},
+                new MenuDetails{MenuName="Counter", MenuUrl="counter",MenuIcon="oi oi-plus"},
+                new MenuDetails{MenuName="Fetch data", MenuUrl="fetchdata",MenuIcon="oi oi-list"},
+                new MenuDetails{MenuName="Employee", MenuUrl="employee",MenuIcon="oi oi-people"},
+                new MenuDetails{MenuName="Employee Form", MenuUrl="employeeform",MenuIcon="oi oi-script"},
+                new MenuDetails{MenuName="Grocery", MenuUrl="grocery",MenuIcon="oi oi-cart"},
+                new MenuDetails{MenuName="Cement", MenuUrl="Cement",MenuIcon="oi oi-basket"},
+                new MenuDetails{MenuName="On after Render", MenuUrl="onafterRenderPage",MenuIcon="oi oi-arrow-right"},
+                new MenuDetails{MenuName="Form validation", MenuUrl="formvalidation",MenuIcon="oi oi-check"},
+            };
+    }
+    class MenuDetails
+    {
+        public string MenuName { get; set; }
+        public string MenuUrl { get; set; }
+        public string MenuIcon { get; set; }
     }
 }
