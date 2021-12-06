@@ -1,0 +1,21 @@
+﻿@page "/"
+@inject ICustomerService CustService
+@implements  IDisposable
+Customer Service Id: @CustService.uid
+<br />
+Customer Name:  @customer.Name
+@code{
+    private Customer customer;
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        if(customer==null)
+        {
+            customer = CustService.GetCustomer(1);
+        }
+    }
+    public void Dispose()
+        {
+
+        }
+}
