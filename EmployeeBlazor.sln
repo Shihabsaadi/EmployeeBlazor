@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerBlazorServer", "Cus
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthBlazor", "AuthBlazor\AuthBlazor.csproj", "{70BF1FB3-95F9-405E-9300-6E27E3312ED1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridBlazor", "DataGridBlazor\DataGridBlazor.csproj", "{4027D9FC-CFC3-4DEB-8505-633C5ECFFD73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataGridBlazor", "DataGridBlazor\DataGridBlazor.csproj", "{4027D9FC-CFC3-4DEB-8505-633C5ECFFD73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
