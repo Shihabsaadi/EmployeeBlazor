@@ -1,12 +1,28 @@
 ﻿@page "/"
-<DataGridComponent TItem="Employee" DataItems="employees" Columns="columnDefinitions"></DataGridComponent>
+<DataGridComponent @ref="grid" TItem="Employee" DataItems="employees" Columns="columnDefinitions" pagingConfig="@(new PagingConfig{
+Enabled=true,CustomPager=true,PageSize=1
+})">
+<customPager>
+    <button class="btn btn-primary" @onclick="PrevPage">Prev</button>
+    <button class="btn btn-primary" @onclick="NextPage">Next</button>
+</customPager>
+</DataGridComponent>
 @code{
+    private DataGridComponent<Employee> grid;
     private List<Employee> employees;
     private List<ColumnDefinition> columnDefinitions;
     protected override void OnInitialized()
     {
         base.OnInitialized();
         Initilize();
+    }
+     private void PrevPage()
+    {
+        grid.GotoPrevPage();
+    }
+    private void NextPage()
+    {
+        grid.GotoNextPage();
     }
     private void Initilize()
     {
@@ -36,6 +52,7 @@
                 );
         }
     }
+   
     class Employee
     {
         public string Name { get; set; }
