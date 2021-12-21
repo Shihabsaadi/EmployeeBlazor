@@ -1,18 +1,18 @@
-using DataGridBlazor.Data;
-using EmployeeWebClient.Services;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DataGridBlazor
+namespace EmployeeWebApi
 {
     public class Startup
     {
@@ -24,17 +24,17 @@ namespace DataGridBlazor
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
-            services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
-            services.AddHttpClient<IWeatherService, WeatherService>(client =>
+
+            services.AddControllers();
+            services.AddSwaggerGen(c =>
             {
-                client.BaseAddress = new Uri("https://localhost:44319/");
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "EmployeeWebApi", Version = "v1" });
             });
+           
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -42,23 +42,24 @@ namespace DataGridBlazor
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EmployeeWebApi v1"));
             }
-            else
-            {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+            app.UseCors(x => x
+           .AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader());
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapBlazorHub();
-                endpoints.MapFallbackToPage("/_Host");
+                endpoints.MapControllers();
             });
         }
     }
