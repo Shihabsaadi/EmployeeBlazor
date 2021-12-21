@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31911.196
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeBlazor", "EmployeeBlazor\EmployeeBlazor.csproj", "{E1F4EF93-B641-4293-80DC-4C76749ECF35}"
 EndProject
@@ -10,6 +10,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthBlazor", "AuthBlazor\AuthBlazor.csproj", "{70BF1FB3-95F9-405E-9300-6E27E3312ED1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataGridBlazor", "DataGridBlazor\DataGridBlazor.csproj", "{4027D9FC-CFC3-4DEB-8505-633C5ECFFD73}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementModel", "EmployeeManagementModel\EmployeeManagementModel.csproj", "{74B3BB75-FB08-408F-A6D3-9F63AC20027D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementWeb", "EmployeeManagementWeb\EmployeeManagementWeb.csproj", "{0DCA3A22-4C7E-4ADB-9F3E-B85B280F0EEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagementApi", "EmployeeManagementApi\EmployeeManagementApi.csproj", "{C5A1251D-CABD-41EA-86DC-121CFFE26357}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{4027D9FC-CFC3-4DEB-8505-633C5ECFFD73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4027D9FC-CFC3-4DEB-8505-633C5ECFFD73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4027D9FC-CFC3-4DEB-8505-633C5ECFFD73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74B3BB75-FB08-408F-A6D3-9F63AC20027D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74B3BB75-FB08-408F-A6D3-9F63AC20027D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74B3BB75-FB08-408F-A6D3-9F63AC20027D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74B3BB75-FB08-408F-A6D3-9F63AC20027D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DCA3A22-4C7E-4ADB-9F3E-B85B280F0EEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DCA3A22-4C7E-4ADB-9F3E-B85B280F0EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DCA3A22-4C7E-4ADB-9F3E-B85B280F0EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DCA3A22-4C7E-4ADB-9F3E-B85B280F0EEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5A1251D-CABD-41EA-86DC-121CFFE26357}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5A1251D-CABD-41EA-86DC-121CFFE26357}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5A1251D-CABD-41EA-86DC-121CFFE26357}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5A1251D-CABD-41EA-86DC-121CFFE26357}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
